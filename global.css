@@ -1,108 +1,37 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  min-width: 320px;
-  padding: 0;
-}
-
-
-/* Сетка */
-.container {
-  max-width: 1480px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 70px;
-  padding-right: 70px;
-  width: 100%;
-}
-@media (max-width: 1024px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  margin-right: -10px;
-  margin-left: -10px;
-}
-.col-5 {
-  -webkit-flex: 0 0 41.666664999999995%;
-  -ms-flex: 0 0 41.666664999999995%;
-  flex: 0 0 41.666664999999995%;
-  max-width: 41.666664999999995%;
-}
-.col-7 {
-  -webkit-flex: 0 0 58.333331%;
-  -ms-flex: 0 0 58.333331%;
-  flex: 0 0 58.333331%;
-  max-width: 58.333331%;
-}
-.col,
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12,
-.col-auto,
-.col-td,
-.col-td-1,
-.col-td-2,
-.col-td-3,
-.col-td-4,
-.col-td-5,
-.col-td-6,
-.col-td-auto,
-.col-md,
-.col-md-1,
-.col-md-2,
-.col-md-3
-.col-md-auto {
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: relative;
-}
-
-
 /* Стиль темы и Инструменты */
 header,
 footer {
   position: relative;
 }
-
+header {
+  -webkit-box-shadow: 1px 4px 4px 0px rgba(0,0,0,.05);
+  box-shadow: 1px 4px 4px 0px rgba(0,0,0,.05);
+  z-index: 20;
+}
 footer {
   background-color: #BCBCBC;
   color: #fff;
 }
 
-.site-title {
+#site-main {
+  /* Overlay-color */
+  background: #FCFCFC;
+}
+.site-page-content {
+  background-color: #fff;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 2400px;
+}
 
+a.site-title {
+  color: #707070;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
 }
 .site-desc {
 
@@ -135,7 +64,6 @@ footer {
 }
 .site-tabs__item {
   box-sizing: content-box;
-  color: rgba(0,0,0,.6);
   flex-direction: row;
   flex-wrap: nowrap;
   font-size: 12px;
@@ -150,6 +78,9 @@ footer {
   padding-left: 0;
   padding-top: 19px;
   text-align: center;
+}
+.site-tabs__item > a {
+  color: rgba(0,0,0,.6);
   text-decoration: none;
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
@@ -167,11 +98,11 @@ footer {
   width: 10px;
   height: 1px;
 }
-.site-tabs__item:not(.is-disabled):hover,
-.site-tabs__item:not(.is-disabled).is-active {
+.site-tabs__item:not(.is-disabled) > a:hover,
+.site-tabs__item:not(.is-disabled).is-active > a {
   color: #000;
 }
-.site-tabs__item:not(.is-disabled).is-active {
+.site-tabs__item:not(.is-disabled).is-active > a {
   cursor: default;
 }
 
@@ -197,13 +128,13 @@ footer {
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
 }
-.site-lang a:hover,
-.site-lang a.current_page_item,
-.site-lang a.is-active {
+.site-lang li a:hover,
+.site-lang li.current_page_item a,
+.site-lang li.is-active a {
   color: #000;
 }
-.site-lang a.current_page_item,
-.site-lang a.is-active {
+.site-lang li.current_page_item a,
+.site-lang li.is-active a {
   cursor: default;
 }
 
@@ -282,6 +213,20 @@ footer {
   padding-top: 128px;
   padding-bottom: 128px;
 }
+.site-social {
+  float: right;
+}
+.site-social li {
+  display: inline-block;
+  margin-right: 20px;
+}
+.site-social li:last-child {
+  margin-right: 0;
+}
+.site-social li a {
+  color: #fff;
+  text-decoration: none;
+}
 
 .space-hor {
   padding-left: 20px;
@@ -299,6 +244,30 @@ footer {
   padding-left: 30px;
   padding-right: 30px;
 }
+.space-vert2 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.space-vert {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.space-vert0 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.space-vert05 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.space-vert15 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.space-vert2 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 .space-top {
   padding-top: 20px;
 }
@@ -312,5 +281,26 @@ footer {
   padding-top: 20px;
 }
 .space-top15 {
-  padding-top: 30px;
+  padding-top: 30px;  
+}
+.space-top2 {
+  padding-top: 40px;
+}
+.space-bottom0 {
+  padding-bottom: 5px;
+}
+.space-bottom05 {
+  padding-bottom: 10px;
+}
+.space-bottom {
+  padding-bottom: 20px;
+}
+.space-bottom15 {
+  padding-bottom: 30px;  
+}
+.space-bottom2 {
+  padding-bottom: 40px;
+}
+.wrap {
+  position: relative;
 }

@@ -31,10 +31,10 @@
     <div class="site-page-content">
         <!-- header -->
         <header class="header clear">
-            <div class="container space-top">
-                <div class="site-title">
+            <div class="container space-top wrap">
+                <a href="/" class="site-title" title="Перейти на главную страницу">
                     <h1 style="font-family: Times New Roman;"><?php bloginfo('name'); ?></h1>
-                </div>
+                </a>
                 <div class="site-desc">
                     <p><?php bloginfo('description'); ?></p>
                 </div>

@@ -1,0 +1,72 @@
+
+/* Сетка */
+.container {
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 70px;
+  padding-right: 70px;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.col-5 {
+  -webkit-flex: 0 0 41.666664999999995%;
+  -ms-flex: 0 0 41.666664999999995%;
+  flex: 0 0 41.666664999999995%;
+  max-width: 41.666664999999995%;
+}
+.col-7 {
+  -webkit-flex: 0 0 58.333331%;
+  -ms-flex: 0 0 58.333331%;
+  flex: 0 0 58.333331%;
+  max-width: 58.333331%;
+}
+.col,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col-auto,
+.col-td,
+.col-td-1,
+.col-td-2,
+.col-td-3,
+.col-td-4,
+.col-td-5,
+.col-td-6,
+.col-td-auto,
+.col-md,
+.col-md-1,
+.col-md-2,
+.col-md-3
+.col-md-auto {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+}
