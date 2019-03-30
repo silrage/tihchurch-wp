@@ -8,24 +8,48 @@
       </div>
       <div class="site-primary-menu">
         <div class="site-tabs">
-          <div class="site-tabs__wrapper">
-            <a href="#" class="site-tabs__item is-active">Новости</a>
-            <a href="#" class="site-tabs__item">Храм</a>
-            <a href="#" class="site-tabs__item">Духовенство</a>
-            <a href="#" class="site-tabs__item">История Храма</a>
-            <a href="#" class="site-tabs__item">История монастыря</a>
-            <a href="#" class="site-tabs__item">Святые и святыни Монастыря</a>
-            <a href="#" class="site-tabs__item">Помощь Храму</a>
-            <a href="#" class="site-tabs__item">Расписание Богослужений</a>
-            <a href="#" class="site-tabs__item">Медиа</a>
-            <a href="#" class="site-tabs__item">Контакты</a>
-          </div>
+          <ul class="site-tabs__wrapper">
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item is-active">Новости</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Храм</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Духовенство</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">История Храма</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">История монастыря</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Святые и святыни Монастыря</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Помощь Храму</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Расписание Богослужений</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Медиа</a>
+            </li>
+            <li class="site-tabs__item">
+              <a href="#" class="site-tabs__item">Контакты</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="site-lang">
-      <a href="#" class="is-active">Русский</a>
-      <a href="#">English</a>
+    <ul class="site-lang">
+      <li class="lang-item current_page_item">
+        <a href="#">Русский</a>
+      </li>
+      <li class="lang-item">
+        <a href="#">English</a>
+      </li>
     </div>
   </header>
