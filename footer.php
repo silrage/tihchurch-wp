@@ -3,7 +3,7 @@
     <div class="container">
         <div class="space-hor15">
             <div class="row space-vert2">
-                <div class="col-5">
+                <div class="col-5 col-td-6">
                     <div class="site-title">
                         <h4>Храм Тихвинской иконы Божией Матери</h4>
                     </div>
@@ -16,7 +16,7 @@
                         <p class="site-text-p3">sample@sample.sample</p>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-7 col-td-6">
                     <ul class="site-social space-top2">
                         <li><a href="http://" target="_blank" rel="noopener noreferrer">VK</a></li>
                         <li><a href="http://" target="_blank" rel="noopener noreferrer">Insta</a></li>
