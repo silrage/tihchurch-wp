@@ -8,9 +8,24 @@ header {
   box-shadow: 1px 4px 4px 0px rgba(0,0,0,.05);
   z-index: 20;
 }
+@media (min-width: 768px) {
+  header .site-title,
+  header .site-desc {
+    margin-right: 100px;
+  }
+}
+@media (max-width: 767px) {
+  header .site-title {
+    margin-top: 30px;
+  }
+}
 footer {
   background-color: #BCBCBC;
   color: #fff;
+}
+footer a {
+  color: #fff;
+  text-decoration: underline;
 }
 
 #site-main {
@@ -307,10 +322,29 @@ a.site-title {
   position: relative;
   width: 100%;
 }
+.site-banner__item:after {
+  content: "";
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.4) 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 .site-banner__item-promo {
   color: #fff;
   position: absolute;
   bottom: 100px;
+  z-index: 3;
+}
+@media (max-width: 767px) {
+  .site-banner__item:after {
+    background: rgba(0,0,0,.4);
+  }
+  .site-banner__item-promo {
+    bottom: 20px;
+  }
 }
 
 .site-search { }
@@ -342,6 +376,7 @@ a.site-title {
   color: rgba(0,0,0,.3);
 }
 .site-search-btn {
+  display: none;
   background: #fff;
   border: 2px solid #E0E0E0;
   -webkit-border-radius: 5px;
@@ -356,8 +391,17 @@ a.site-title {
   padding-right: 50px;
 }
 .site-search-main {
-  padding-top: 128px;
-  padding-bottom: 128px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+@media (min-width: 1400px) {
+  .site-search-main {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+  .site-search-main .site-search-btn {
+    display: block;
+  }
 }
 .site-social {
   float: right;
