@@ -46,10 +46,10 @@
     </div>
 </section>
 
-<section id="news">
-    <div class="container">
-        <div class="news-container space-hor15">
-            <div class="news-container__content">
+<section id="news" class="content">
+    <div class="container row">
+        <div class="news-container col-9 col-td-6">
+            <div class="news-container__content row">
                 <?php
                 global $query_string; // параметры базового запроса
                 query_posts( $query_string .'&cat=1&order=ASC&posts_per_page=20' );
@@ -57,7 +57,7 @@
                     while (have_posts()) {
                         the_post(); ?>
 
-                        <div class="news-container__one-post">
+                        <div class="news-container__one-post col-6 col-md-3">
                             <div class="news-container__img-wrapper">
                                 <div class="news-container__first-image">
                                     <img src="<?php the_field('img1'); ?>">
@@ -95,6 +95,56 @@
                 else echo "<h2>Записей нет.</h2>";
                 wp_reset_query();
                 ?>
+            </div>
+        </div>
+        <div class="sidebar-widget col-3 col-td-6">
+            <div class="sidebar-widget-location">
+                <span class="sidebar-widget__title">
+                    Для тех, кто хочет к нам приехать
+                </span>
+                <span class="sidebar-widget__subtitle">
+                    <strong>Работа библиотеки Храма</strong>
+                </span>
+                <div class="sidebar-widget-work-time-days-wrapper">
+                    <div class="sidebar-widget-work-time-days">
+                        <span class="sidebar-widget__text">Понедельник и четверг</span>
+                        <strong>15</strong> - <strong>19</strong> ч
+                    </div>
+                    <div class="sidebar-widget-work-time-days">
+                        <span class="sidebar-widget__text">Суббота и воскресенье</span>
+                        <strong>10</strong> - <strong>19</strong> ч
+                    </div>
+                </div>
+                <a href="http://tihchurch.ru/kontakty/" class="sidebar-widget-link marg-top-20"><strong>Схема проезда</strong></a>
+            </div>
+            <div class="sidebar-widget">
+                <span class="sidebar-widget__title">
+                    Симоновские встречи
+                </span>
+                <span class="sidebar-widget__subtitle">
+                    <strong>Симоновские встречи для детей, молодежи и взрослых</strong>
+                </span>
+                <span class="sidebar-widget__text">
+                    Воскресные беседы по основам православной культуры проводятся каждое воскресенье в 15 ч в библиотеке храма.
+                </span>
+                <span class="sidebar-widget__title marg-top-40 marg-bottom-20 text-warning">
+                    <strong>Внимание!</strong>
+                </span>
+                <a href="#" class="sidebar-widget-link marg-bottm-40"><strong>Не православные общины</strong></a>
+            </div>
+            <div class="sidebar-widget">
+                <span class="sidebar-widget__title">
+                    Икона дня
+                </span>
+                <div class="sidebar-widget__image-wrapper">
+                    <img width="170" src="https://days.pravoslavie.ru/jpg/is4133.jpg" class="sidebar-widget__image" alt="Икона">
+                </div>
+                <span class="sidebar-widget__subtitle text-center">
+                    <strong>Святитель Кирилл Иерусалимский.</strong>
+                </span> 
+                <span class="sidebar-widget__text text-center">
+                    31 марта 2019 г. ( 18 марта ст.ст.), воскресенье.
+                </span>           
             </div>
         </div>
     </div>
