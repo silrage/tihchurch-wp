@@ -14,15 +14,11 @@
                         <p class="site-text-p3"><?php
                             $other_page = 39;
                             the_field('addres', $other_page); ?></p>
-                        <p class="site-text-p3"><?php
-                            $other_page = 39;
-                            the_field('phone', $other_page); ?></p>
+                        <p class="site-text-p3"><?php the_field('phone', $other_page); ?></p>
 
-                        <p class="site-text-p3"><a href="mailto:<?php
-                            $other_page = 39;
-                            the_field('email', $other_page); ?>"><?php
-                                $other_page = 39;
-                                the_field('email', $other_page); ?></a></p>
+                        <p class="site-text-p3"><a href="mailto:<?php the_field('email', $other_page); ?>">
+                                <?php the_field('email', $other_page); ?>
+                            </a></p>
                     </div>
                 </div>
                 <div class="col-7 col-td-6">
