@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section id="news">
+<section id="hram">
     <div class="container">
         <div class="news-container space-hor15">
             <div class="news-container__content">
@@ -14,15 +14,7 @@
                         <div class="news-container__one-post">
                             <div class="news-container__img-wrapper">
                                 <div class="news-container__first-image">
-                                    <img src="<?php the_field('img1'); ?>">
-                                </div>
-                                <div class="news-container__other-images">
-                                    <div class="news-container__other-image">
-                                        <img src="<?php the_field('img2'); ?>">
-                                    </div>
-                                    <div class="news-container__other-image">
-                                        <img src="<?php the_field('img3'); ?>">
-                                    </div>
+                                    <?php the_post_thumbnail(); ?>
                                 </div>
                             </div>
                             <div class="news-container__text">
