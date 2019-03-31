@@ -38,6 +38,9 @@
                 <div class="site-desc">
                     <p><?php bloginfo('description'); ?></p>
                 </div>
+                <a href="#" class="bvi-link bvi-open">
+                    <i class="bvi-icon bvi-eye bvi-2x"></i>
+                </a>
                 <div class="site-primary-menu">
                     <div class="site-tabs">
                         <?php html5blank_nav(); ?>
