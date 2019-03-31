@@ -5,15 +5,24 @@
             <div class="row space-vert2">
                 <div class="col-5 col-td-6">
                     <div class="site-title">
-                        <h4>Храм Тихвинской иконы Божией Матери</h4>
+                        <h4><?php bloginfo('name'); ?></h4>
                     </div>
                     <div class="site-desc space-bottom">
-                        <p class="site-text-p3">Патриаршее подворье Симонова онастыря г. Москвы</p>
+                        <p class="site-text-p3"><?php bloginfo('description'); ?></p>
                     </div>
                     <div class="site-contacts">
-                        <p class="site-text-p3">11111 Москва</p>
-                        <p class="site-text-p3">+7 999 999 99 99</p>
-                        <p class="site-text-p3">sample@sample.sample</p>
+                        <p class="site-text-p3"><?php
+                            $other_page = 39;
+                            the_field('addres', $other_page); ?></p>
+                        <p class="site-text-p3"><?php
+                            $other_page = 39;
+                            the_field('phone', $other_page); ?></p>
+
+                        <p class="site-text-p3"><a href="mailto:<?php
+                            $other_page = 39;
+                            the_field('email', $other_page); ?>"><?php
+                                $other_page = 39;
+                                the_field('email', $other_page); ?></a></p>
                     </div>
                 </div>
                 <div class="col-7 col-td-6">
