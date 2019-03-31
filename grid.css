@@ -23,8 +23,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin-right: -10px;
-  margin-left: -10px;
+  margin: -10px auto;
 }
 .col-1 {
   -webkit-flex: 0 0 8.333333%;

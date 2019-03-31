@@ -163,6 +163,9 @@ function html5blank_styles()
     wp_register_style('global', get_template_directory_uri() . '/global.css', array(), '', 'all');
     wp_enqueue_style('global'); // Enqueue it!
 
+    wp_register_style('grid', get_template_directory_uri() . '/grid.css', array(), '', 'all');
+    wp_enqueue_style('grid'); // Enqueue it!
+
 
     wp_register_style('news', get_template_directory_uri() . '/news.css', array(), '', 'all');
     wp_enqueue_style('news'); // Enqueue it!
@@ -497,8 +500,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 
 
 //убираем категории
-add_filter( 'category_link', function($a){
-    return str_replace( 'category/', '', $a );
-}, 99 );
+//add_filter( 'category_link', function($a){
+//    return str_replace( 'category/', '', $a );
+//}, 99 );
 
 ?>
