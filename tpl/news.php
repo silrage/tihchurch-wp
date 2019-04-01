@@ -9,14 +9,6 @@
             <div class="news-container__first-image">
               <img src="SM_0006.jpg" >
             </div>
-            <div class="news-container__other-images">
-              <div class="news-container__other-image">
-                <img src="SM_0011.jpg" >
-              </div>
-              <div class="news-container__other-image">
-                <img src="SM_0006.jpg" >
-              </div>
-            </div>
           </div>
           <div class="news-container__text">
             <div class="news-container__date-wrapper">

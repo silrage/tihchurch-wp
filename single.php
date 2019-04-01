@@ -29,7 +29,7 @@
                         <!-- /post details -->
 
                         <?php the_content(); // Dynamic Content ?>
-                        
+
                         <?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 
                     </article>
