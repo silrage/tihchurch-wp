@@ -37,11 +37,16 @@
     s-17-7.626-17-17S14.61,6,23.984,6z"/>
 </svg>
             </i>
+
+            <form class="search" method="get" action="<?php echo home_url(); ?>" role="search">
             <input
-                    type="text"
+                    class="search-input"
+                    type="search"
+                    name="s"
                     placeholder="Поиск по сайту: новости, история, расписание Богослужений"
             />
-            <button class="site-search-btn">Поиск</button>
+            <button class="site-search-btn" type="submit" role="button">Поиск</button>
+            </form>
         </div>
     </div>
 </section>
