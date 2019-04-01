@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
-<section id="hram">
-    <div class="container">
-        <div class="news-container space-hor15">
+<section class="content">
+    <div class="container row">
+        <div class="news-container col-9 col-td-6">
             <div class="news-container__content">
                 <?php
                 global $query_string; // параметры базового запроса
@@ -43,9 +43,10 @@
                 ?>
             </div>
         </div>
+        <div class="sidebar-widget col-3 col-td-6">
+            <?php get_sidebar(); ?>
+        </div>
     </div>
 </section>
-
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

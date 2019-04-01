@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-<section id="hram">
-    <div class="container">
-        <div class="news-container space-hor15">
+<section class="content">
+    <div class="container row">
+        <div class="news-container col-9 col-td-6">
             <div class="news-container__content">
                 <?php
                 global $query_string; // параметры базового запроса
-                query_posts( $query_string .'&order=ASC&posts_per_page=20' );
+                query_posts($query_string . '&order=ASC&posts_per_page=20');
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
 
-                    <?php }?>
+                    <?php } ?>
 
                     <div class="navigation">
                         <div class="next-posts"><?php next_posts_link(); ?></div>
@@ -43,9 +43,10 @@
                 ?>
             </div>
         </div>
+        <div class="sidebar-widget col-3 col-td-6">
+            <?php get_sidebar(); ?>
+        </div>
     </div>
 </section>
-
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
