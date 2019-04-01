@@ -1,11 +1,13 @@
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
     <div class="news-container__one-post">
-        <div class="news-container__img-wrapper">
-            <div class="news-container__first-image">
-                <?php the_post_thumbnail(); ?>
+        <?php if (has_post_thumbnail()): ?>
+            <div class="news-container__img-wrapper">
+                <div class="news-container__first-image">
+                    <?php the_post_thumbnail(); ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
         <div class="news-container__text">
             <div class="news-container__date-wrapper">
                 <span class="news-container__date"><?php echo get_the_date(); ?></span>

@@ -31,24 +31,36 @@
     <div class="site-page-content">
         <!-- header -->
         <header class="header clear">
-            <div class="container space-top wrap">
-                <a href="/" class="site-title" title="Перейти на главную страницу">
-                    <h2 style="font-family: Times New Roman;"><?php bloginfo('name'); ?></h2>
-                </a>
-                <div class="site-desc">
-                    <p><?php bloginfo('description'); ?></p>
-                </div>
-                <a href="#" class="bvi-link bvi-open">
-                    <i class="bvi-icon bvi-eye bvi-2x"></i>
-                </a>
-                <div class="site-primary-menu">
-                    <div class="site-tabs">
-                        <?php html5blank_nav(); ?>
+            <div class="container">
+                <div class="wrap space-top space-md-top2">
+                    <a
+                        href="/"
+                        class="site-title"
+                        title="<?=(get_locale()==='ru_RU'?'Перейти на главную страницу':'Home');?>"
+                    >
+                        <h2 style="font-family: Times New Roman;"><?php bloginfo('name'); ?></h2>
+                    </a>
+                    <div class="site-desc">
+                        <p><?php bloginfo('description'); ?></p>
+                    </div>
+                    <div class="site-primary-menu">
+                        <div class="site-tabs">
+                            <?php html5blank_nav(); ?>
+                        </div>
+                    </div>
+                    <div class="site-right-menu">
+                        <?php html5blank_nav_lang(); ?>
+                        <a
+                            href="#"
+                            class="bvi-link bvi-open"
+                            title="<?=(get_locale()==='ru_RU'?'Режим для слабовидящих':'Visually impaired mode');?>"
+                        >
+                            <i class="bvi-icon bvi-eye bvi-2x"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <?php html5blank_nav_lang(); ?>
         </header>
         <!-- /header -->
 
