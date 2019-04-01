@@ -33,7 +33,7 @@
         <header class="header clear">
             <div class="container space-top wrap">
                 <a href="/" class="site-title" title="Перейти на главную страницу">
-                    <h1 style="font-family: Times New Roman;"><?php bloginfo('name'); ?></h1>
+                    <h2 style="font-family: Times New Roman;"><?php bloginfo('name'); ?></h2>
                 </a>
                 <div class="site-desc">
                     <p><?php bloginfo('description'); ?></p>

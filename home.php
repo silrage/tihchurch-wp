@@ -37,19 +37,24 @@
     s-17-7.626-17-17S14.61,6,23.984,6z"/>
 </svg>
             </i>
+
+            <form class="search" method="get" action="<?php echo home_url(); ?>" role="search">
             <input
-                    type="text"
+                    class="search-input"
+                    type="search"
+                    name="s"
                     placeholder="Поиск по сайту: новости, история, расписание Богослужений"
             />
-            <button class="site-search-btn">Поиск</button>
+            <button class="site-search-btn" type="submit" role="button">Поиск</button>
+            </form>
         </div>
     </div>
 </section>
 
-<section id="news">
-    <div class="container">
-        <div class="news-container space-hor15">
-            <div class="news-container__content">
+<section class="content">
+    <div class="container row">
+        <div class="news-container col-9 col-td-6">
+            <div class="news-container__content row">
                 <?php
                 global $query_string; // параметры базового запроса
                 query_posts( $query_string .'&cat=1&order=ASC&posts_per_page=20' );
@@ -57,18 +62,10 @@
                     while (have_posts()) {
                         the_post(); ?>
 
-                        <div class="news-container__one-post">
+                        <div class="news-container__one-post col-6 col-md-3">
                             <div class="news-container__img-wrapper">
                                 <div class="news-container__first-image">
                                     <img src="<?php the_field('img1'); ?>">
-                                </div>
-                                <div class="news-container__other-images">
-                                    <div class="news-container__other-image">
-                                        <img src="<?php the_field('img2'); ?>">
-                                    </div>
-                                    <div class="news-container__other-image">
-                                        <img src="<?php the_field('img3'); ?>">
-                                    </div>
                                 </div>
                             </div>
                             <div class="news-container__text">
@@ -97,10 +94,12 @@
                 ?>
             </div>
         </div>
+        <div class="sidebar-widget col-3 col-td-6">
+            <?php get_sidebar(); ?>
+        </div>
     </div>
 </section>
 
 
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

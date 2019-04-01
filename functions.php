@@ -163,6 +163,9 @@ function html5blank_styles()
     wp_register_style('global', get_template_directory_uri() . '/global.css', array(), '', 'all');
     wp_enqueue_style('global'); // Enqueue it!
 
+    wp_register_style('grid', get_template_directory_uri() . '/grid.css', array(), '', 'all');
+    wp_enqueue_style('grid'); // Enqueue it!
+
 
     wp_register_style('news', get_template_directory_uri() . '/news.css', array(), '', 'all');
     wp_enqueue_style('news'); // Enqueue it!
@@ -223,10 +226,10 @@ if (function_exists('register_sidebar'))
         'name' => __('Widget Area 1', 'html5blank'),
         'description' => __('Description for this widget-area...', 'html5blank'),
         'id' => 'widget-area-1',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'before_widget' => '<div id="%1$s" class="%2$s sidebar-widget-location">',
         'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
+        'before_title' => '<span class="sidebar-widget__title"><strong>',
+        'after_title' => '</strong></span>'
     ));
 
     // Define Sidebar Widget Area 2
@@ -497,8 +500,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 
 
 //убираем категории
-add_filter( 'category_link', function($a){
-    return str_replace( 'category/', '', $a );
-}, 99 );
+//add_filter( 'category_link', function($a){
+//    return str_replace( 'category/', '', $a );
+//}, 99 );
 
 ?>
