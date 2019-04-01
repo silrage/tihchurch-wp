@@ -1,16 +1,19 @@
 <?php get_header(); ?>
 
-<section id="category">
-    <div class="container">
-
-			<h1><?php _e( 'Categories for ', 'html5blank' ); single_cat_title(); ?></h1>
-
+<section class="content">
+    <div class="container row">
+        <div class="news-container col-9 col-td-6">
+            <div class="news-container__content">
 			<?php get_template_part('loop'); ?>
 
-			<?php get_template_part('pagination'); ?>
+<!--			--><?php //get_template_part('pagination'); ?>
 
             </div>
-        </section>
-<?php get_sidebar(); ?>
+        </div>
+        <div class="sidebar-widget col-3 col-td-6">
+            <?php get_sidebar(); ?>
+        </div>
+    </div>
+</section>
 
 <?php get_footer(); ?>

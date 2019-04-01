@@ -3,9 +3,10 @@
 <section class="content">
     <div class="container row">
         <div class="news-container col-9 col-td-6">
-            <div class="news-container__content">
 
-			<h1><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+            <h1><?php echo sprintf( __( '%s результата по запросу - ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+
+            <div class="news-container__content">
 
 			<?php get_template_part('loop'); ?>
 
