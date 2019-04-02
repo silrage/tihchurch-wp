@@ -384,6 +384,11 @@ function html5blankcomments($comment, $args, $depth)
 	<?php endif; ?>
 <?php }
 
+// @TODO - Translite string
+function lang2my ($ru, $eng) {
+    return get_locale() === 'ru_RU' ? $ru : $eng;
+}
+
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
 \*------------------------------------*/

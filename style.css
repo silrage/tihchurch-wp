@@ -2,17 +2,8 @@
 
 
 /* Стили кнопки для слабовидящщих */
-
-.bvi-link {
-    position: fixed;
-    right: 1rem;
-    opacity: .75;
-    padding: .375rem .75rem !important;
-    z-index: 999999 !important;
-    font-size: 1rem !important;
-    transition: all .15s ease-in-out;
-}
-.bvi-link, .bvi-eye-link {
-    top: 45px !important;
-    border-radius: 5px !important;
+.bvi-eye-link {
+  top: auto !important;
+  right: 3rem !important;
+  bottom: 3rem !important;
 }
