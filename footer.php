@@ -139,6 +139,68 @@
     return s;
   }
   bodyOnload();
+
+
+
+
+///поиск
+  document.getElementById('search').addEventListener("input", function () {
+    if (this.value.length > 3) {
+      return throttle(getSearchPosts(this.value));
+    }
+    setResult('')
+
+  });
+
+  function getSearchPosts(search) {
+    fetch(`/wp-json/wp/v2/posts?search=${search}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response) {
+        getSearchPages(search, response);
+      })
+      .catch(alert);
+  }
+
+  function getSearchPages(search, data) {
+    fetch(`/wp-json/wp/v2/pages?search=${search}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response) {
+        setResult(response.concat(data));
+      })
+      .catch(alert);
+  }
+
+  function setResult(allData) {
+    let div = document.createElement('div');
+    div.id = "allsearch";
+
+    if (allData.length) {
+      allData.forEach((el) => {
+        div.innerHTML = div.innerHTML + `<div><a href="${el.link}">${el.title.rendered}</a><span>${el.excerpt.rendered}</span></div>`;
+      });
+    }
+
+    allsearch.replaceWith(div);
+  }
+
+  function throttle(callback) {
+
+    let wait = false;
+    return function () {
+      if (!wait) {
+
+        callback.apply(null, arguments);
+        wait = true;
+        setTimeout(function () {
+          wait = false;
+        }, 1000);
+      }
+    }
+  }
 </script>
 
 </body>

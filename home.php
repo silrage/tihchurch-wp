@@ -38,6 +38,7 @@
 
             <form class="search" method="get" action="<?php echo home_url(); ?>" role="search">
                 <input
+                        id="search"
                         class="search-input"
                         type="search"
                         name="s"
@@ -45,6 +46,7 @@
                 />
                 <button class="site-search-btn" type="submit" role="button">Поиск</button>
             </form>
+            <div id="allsearch"></div>
         </div>
     </div>
 </section>
@@ -57,27 +59,27 @@
                 <div class="news-container__content row">
                     <?php
                     global $query_string; // параметры базового запроса
-                    query_posts( $query_string .'&cat=1&order=ASC&posts_per_page=20' );
+                    query_posts($query_string . '&cat=1&order=ASC&posts_per_page=20');
                     if (have_posts()) {
                         while (have_posts()) {
                             the_post(); ?>
-    
+
                             <div class="news-container__one-post col-6 col-md-3">
                                 <?php if (get_field('img1')): ?>
                                     <?php $hasMoreImages = get_field('img2') && get_field('img3'); ?>
-                                    <div class="news-container__img-wrapper<?=($hasMoreImages) ? ' has-more-images' : null;?>">
+                                    <div class="news-container__img-wrapper<?= ($hasMoreImages) ? ' has-more-images' : null; ?>">
                                         <div class="news-container__first-image">
                                             <img src="<?php the_field('img1'); ?>">
                                         </div>
                                         <?php
-                                            if ($hasMoreImages) {
-                                        ?>
+                                        if ($hasMoreImages) {
+                                            ?>
                                             <div class="news-container__other-images">
                                                 <img src="<?php the_field('img2'); ?>">
                                                 <img src="<?php the_field('img3'); ?>">
                                             </div>
-                                        <?php
-                                            }
+                                            <?php
+                                        }
                                         ?>
                                     </div>
                                 <?php endif; ?>
@@ -89,17 +91,17 @@
                                         <span class="news-container__title"><?php the_title(); ?></span>
                                         <span class="news-container__description"><?php the_excerpt(); ?></span>
                                     </a>
-    
+
                                 </div>
                             </div>
-    
-                        <?php }?>
-    
+
+                        <?php } ?>
+
                         <div class="navigation">
                             <div class="next-posts"><?php next_posts_link(); ?></div>
                             <div class="prev-posts"><?php previous_posts_link(); ?></div>
                         </div>
-    
+
                         <?php
                     } // конец if
                     else echo "<h2>Записей нет.</h2>";
