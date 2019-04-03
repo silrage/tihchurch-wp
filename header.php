@@ -38,10 +38,19 @@
                         class="site-title"
                         title="<?=(get_locale()==='ru_RU'?'Перейти на главную страницу':'Home');?>"
                     >
-                        <h2 style="font-family: Times New Roman;"><?php bloginfo('name'); ?></h2>
+                        <h2 style="font-family: Times New Roman;"><?php
+                            $lang = pll_current_language();
+                            if($lang === 'ru'){
+                                $other_page = 39;
+                            } else {
+                                $other_page = 96;
+                            }
+
+                            the_field('name', $other_page);
+                            ?></h2>
                     </a>
                     <div class="site-desc">
-                        <p><?php bloginfo('description'); ?></p>
+                        <p><?php the_field('description', $other_page); ?></p>
                     </div>
                     <div class="site-primary-menu">
                         <div class="site-tabs">

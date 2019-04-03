@@ -5,15 +5,23 @@
             <div class="row space-vert2">
                 <div class="col-5 col-td-6">
                     <div class="site-title">
-                        <h4><?php bloginfo('name'); ?></h4>
+                        <h4><?php
+                            $lang = pll_current_language();
+                            if($lang === 'ru'){
+                                $other_page = 39;
+                            } else {
+                                $other_page = 96;
+                            }
+
+                            the_field('name', $other_page);
+
+                            ?></h4>
                     </div>
                     <div class="site-desc space-bottom">
-                        <p class="site-text-p3"><?php bloginfo('description'); ?></p>
+                        <p class="site-text-p3"><?php the_field('description', $other_page); ?></p>
                     </div>
                     <div class="site-contacts">
-                        <p class="site-text-p3"><?php
-                            $other_page = 39;
-                            the_field('addres', $other_page); ?></p>
+                        <p class="site-text-p3"><?php the_field('addres', $other_page); ?></p>
                         <p class="site-text-p3"><?php the_field('phone', $other_page); ?></p>
 
                         <p class="site-text-p3"><a href="mailto:<?php the_field('email', $other_page); ?>">
@@ -175,6 +183,7 @@
   }
 
   function setResult(allData) {
+    console.log(allData)
     let div = document.createElement('div');
     div.id = "allsearch";
 

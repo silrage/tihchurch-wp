@@ -35,6 +35,15 @@
     s-17-7.626-17-17S14.61,6,23.984,6z"/>
 </svg>
             </i>
+            <?php
+            $lang = pll_current_language();
+            if($lang === 'ru'){
+                $other_page = 39;
+            } else {
+                $other_page = 96;
+            }
+            ?>
+
 
             <form class="search" method="get" action="<?php echo home_url(); ?>" role="search">
                 <input
@@ -42,9 +51,9 @@
                         class="search-input"
                         type="search"
                         name="s"
-                        placeholder="Поиск по сайту"
+                        placeholder="<?php  the_field('search', $other_page); ?>"
                 />
-                <button class="site-search-btn" type="submit" role="button">Поиск</button>
+                <button class="site-search-btn" type="submit" role="button"><?php  the_field('search_btn', $other_page); ?></button>
             </form>
             <div id="allsearch"></div>
         </div>
@@ -58,7 +67,7 @@
             <div class="news-container col-9 col-td-6">
                 <div class="news-container__content row">
                     <?php
-                    global $query_string; // параметры базового запроса
+                    global $query_string;
                     query_posts($query_string . '&cat=1&order=ASC&posts_per_page=20');
                     if (have_posts()) {
                         while (have_posts()) {
