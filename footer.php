@@ -184,16 +184,27 @@
 
   function setResult(allData) {
     console.log(allData)
-    let div = document.createElement('div');
-    div.id = "allsearch";
+    var finded = false;
+    var wrap = document.createElement('DIV');
+    var list = document.createElement('UL');
+    wrap.className = "site-search__result-wrap";
+    wrap.appendChild(list);
 
     if (allData.length) {
+      finded = true;
       allData.forEach((el) => {
-        div.innerHTML = div.innerHTML + `<div><a href="${el.link}">${el.title.rendered}</a><span>${el.excerpt.rendered}</span></div>`;
+        list.innerHTML = list.innerHTML + `<li><a href="${el.link}">${el.title.rendered}</a><p>${el.excerpt.rendered}</p></li>`;
       });
     }
 
-    allsearch.replaceWith(div);
+    var result = document.getElementById('allsearch');
+    result.innerHTML = '';
+    if (finded) {
+      result.appendChild(wrap);
+      result.classList.add('is-opened');
+    } else {
+      result.classList.remove('is-opened');
+    }
   }
 
   function throttle(callback) {
