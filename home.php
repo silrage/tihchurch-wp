@@ -42,7 +42,7 @@
                         class="search-input"
                         type="search"
                         name="s"
-                        placeholder="Поиск по сайту: новости, история, расписание Богослужений"
+                        placeholder="Поиск по сайту"
                 />
                 <button class="site-search-btn" type="submit" role="button">Поиск</button>
             </form>
