@@ -7,8 +7,7 @@
         } ?><?php bloginfo('name'); ?></title>
 
     <link href="//www.google-analytics.com" rel="dns-prefetch">
-    <link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
-    <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
+    <?php echo wp_site_icon(); ?>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,9 +35,9 @@
                     <a
                         href="/"
                         class="site-title"
-                        title="<?=(get_locale()==='ru_RU'?'Перейти на главную страницу':'Home');?>"
+                        title="<?=lang2my('Перейти на главную страницу','Home');?>"
                     >
-                        <h2 style="font-family: Times New Roman;"><?php
+                        <h2><?php
                             $lang = pll_current_language();
                             if($lang === 'ru'){
                                 $other_page = 39;
@@ -62,7 +61,7 @@
                         <a
                             href="#"
                             class="bvi-link bvi-open"
-                            title="<?=(get_locale()==='ru_RU'?'Режим для слабовидящих':'Visually impaired mode');?>"
+                            title="<?=lang2my('Режим для слабовидящих','Visually impaired mode');?>"
                         >
                             <i class="bvi-icon bvi-eye bvi-2x"></i>
                         </a>

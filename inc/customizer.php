@@ -22,7 +22,7 @@ function tihchurch_custom_css () {
 			background: <?php echo esc_html(get_theme_mod('ui_bg_overlay'));?>;
 			color: <?php echo esc_html(get_theme_mod('ui_color_content'));?>;
 		}
-		header { background: <?php echo esc_html(get_theme_mod('ui_bg_header'));?>; }
+		header, .site-tabs__item > ul { background: <?php echo esc_html(get_theme_mod('ui_bg_header'));?>; }
 		.site-page-content { background: <?php echo esc_html(get_theme_mod('ui_bg_content'));?>; }
 		.site-tabs__item { font-size: <?php echo esc_html(get_theme_mod('ui_tabs_size'));?>px; }
 		.sidebar-widget__title { border-bottom: 2px solid <?php echo esc_html(get_theme_mod('ui_color_accent'));?>; }

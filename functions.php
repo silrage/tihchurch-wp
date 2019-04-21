@@ -81,7 +81,7 @@ function html5blank_nav()
 		'link_before'     => '',
 		'link_after'      => '',
 		'items_wrap'      => '<ul class="site-tabs__wrapper">%3$s</ul>',
-		'depth'           => -1,
+		'depth'           => 2,
 		'walker'          => ''
 		)
 	);
@@ -384,17 +384,17 @@ function html5blankcomments($comment, $args, $depth)
 	<?php endif; ?>
 <?php }
 
-// @TODO - Translite string
+// Transliterate
 function lang2my ($ru, $eng) {
     return get_locale() === 'ru_RU' ? $ru : $eng;
 }
-
 function getFieldText($fieldName) {
     return get_field( $fieldName . ((pll_current_language() != 'ru') ? '_eng' : null) );
 }
 function getConfText($fieldName) {
     return get_theme_mod( $fieldName . ((pll_current_language() != 'ru') ? '_eng' : null) );
 }
+// ::Transliterate
 
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
