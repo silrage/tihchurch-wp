@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
   <section class="content container">
-    <div class="row">
+    <div class="row space-top15">
       <div class="news-container col-9 col-td-6">
         <div class="news-container__content">
             <?php get_template_part('loop'); ?>
