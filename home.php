@@ -1,33 +1,42 @@
 <?php get_header(); ?>
 
+<?php if (get_theme_mod('banner_img')):
+?>
+<style>
+    .site-banner__wrapper { height: <?php echo get_theme_mod('banner_height');?>px; }
+    @media (max-width: 767px) { .site-banner__wrapper { height: <?php echo get_theme_mod('banner_mobile_height');?>px; } }
+</style>
 <section class="site-banner">
     <div class="site-banner__wrapper">
-        <div class="site-banner__item"
-             style="
-                background: url(http://tihchurch.ru/wp-content/uploads/2019/03/saldoni_bg-e1553954931724.jpg) no-repeat left center fixed;
-                background-size: cover;
-            "
-        >
+        <div class="site-banner__item">
             <div class="container">
                 <div class="site-banner__item-promo">
                     <div class="site-banner__item-title">
                         <?php
-                        if(get_field('banner_title')){
-                            echo '<h3>' . get_field('banner_title') . '</h3>';
+                        if(getConfText( 'banner_title' )) {
+                            echo '<h3>' . getConfText( 'banner_title' ) . '</h3>';
                         }?>
                     </div>
                     <div class="site-banner__item-desc">
                         <?php
-                        if(get_field('banner_desc')){
-                            echo '<p>' . get_field('banner_desc') . '</p>';
+                        if(getConfText('banner_desc')){
+                            echo '<p>' . getConfText('banner_desc') . '</p>';
                         }?>
                     </div>
                 </div>
             </div>
+            <div class="site-banner__item-bg<?php if (get_theme_mod('banner_slide_tonning')) echo ' with-tint';?>">
+                <div
+                    class="site-banner__item-bg-image"
+                    style="
+                        background-image: url(<?=get_theme_mod('banner_img');?>);
+                    "
+                ></div>
+            </div>
         </div>
     </div>
-    </div>
 </section>
+<?php endif; ?>
 
 <section id="site-search">
     <div class="site-search site-search-main container">

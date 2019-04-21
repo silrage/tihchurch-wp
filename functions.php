@@ -389,6 +389,13 @@ function lang2my ($ru, $eng) {
     return get_locale() === 'ru_RU' ? $ru : $eng;
 }
 
+function getFieldText($fieldName) {
+    return get_field( $fieldName . ((pll_current_language() != 'ru') ? '_eng' : null) );
+}
+function getConfText($fieldName) {
+    return get_theme_mod( $fieldName . ((pll_current_language() != 'ru') ? '_eng' : null) );
+}
+
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
 \*------------------------------------*/
@@ -512,5 +519,7 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 //add_filter( 'category_link', function($a){
 //    return str_replace( 'category/', '', $a );
 //}, 99 );
+
+require get_template_directory() . '/inc/customizer.php';
 
 ?>
