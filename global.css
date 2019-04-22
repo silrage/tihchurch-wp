@@ -229,6 +229,9 @@ a.site-title {
   padding: 0;
   width: 100%;
 }
+.site-tabs__wrapper::-webkit-scrollbar {
+  display: none;
+}
 .site-tabs__item {
   box-sizing: content-box;
   flex-direction: row;
