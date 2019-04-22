@@ -1,40 +1,117 @@
 <?php get_header(); ?>
 
-<?php if (get_theme_mod('banner_img')):
+<?php
+    $slidesCount = get_theme_mod('banner_slides_count');
+    if ($slidesCount && $slidesCount > 0):
 ?>
-<style>
-    .site-banner__wrapper { height: <?php echo get_theme_mod('banner_height');?>px; }
-    @media (max-width: 767px) { .site-banner__wrapper { height: <?php echo get_theme_mod('banner_mobile_height');?>px; } }
-</style>
-<section class="site-banner">
+<section id="mainBanner" class="site-banner">
+    <style>
+        .site-banner__wrapper { height: <?php echo get_theme_mod('banner_height');?>px; }
+        @media (max-width: 767px) { .site-banner__wrapper { height: <?php echo get_theme_mod('banner_mobile_height');?>px; } }
+    </style>
     <div class="site-banner__wrapper">
-        <div class="site-banner__item">
-            <div class="container">
-                <div class="site-banner__item-promo">
-                    <div class="site-banner__item-title">
-                        <?php
-                        if(getConfText( 'banner_title' )) {
-                            echo '<h3>' . getConfText( 'banner_title' ) . '</h3>';
-                        }?>
+        <?php
+            for ($i=0; $i<$slidesCount; $i++):
+                if (get_theme_mod('banner_img'.$i)):
+        ?>
+                <div class="site-banner__item">
+                    <div class="container">
+                        <div class="site-banner__item-promo">
+                            <div class="site-banner__item-title">
+                                <?php
+                                if(getConfText( 'banner_title_'.$i )) {
+                                    echo '<h3>' . getConfText( 'banner_title_'.$i ) . '</h3>';
+                                }?>
+                            </div>
+                            <div class="site-banner__item-desc">
+                                <?php
+                                if(getConfText('banner_desc_'.$i)){
+                                    echo '<p>' . getConfText('banner_desc_'.$i) . '</p>';
+                                }?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="site-banner__item-desc">
-                        <?php
-                        if(getConfText('banner_desc')){
-                            echo '<p>' . getConfText('banner_desc') . '</p>';
-                        }?>
+                    <div class="site-banner__item-bg<?php if (get_theme_mod('banner_slide_tonning_'.$i)) echo ' with-tint';?>">
+                        <style>
+                            .site-banner__item-bg-image__<?php echo $i;?> { background-image: url(<?php echo get_theme_mod('banner_img'.$i);?>); }
+                            @media (max-width: 767px) { .site-banner__item-bg-image__<?php echo $i;?> { background-image: url(<?php echo get_theme_mod('banner_mobile_img'.$i);?>); } }
+                        </style>
+                        <div class="site-banner__item-bg-image site-banner__item-bg-image__<?php echo $i;?>"></div>
                     </div>
                 </div>
-            </div>
-            <div class="site-banner__item-bg<?php if (get_theme_mod('banner_slide_tonning')) echo ' with-tint';?>">
-                <div
-                    class="site-banner__item-bg-image"
-                    style="
-                        background-image: url(<?=get_theme_mod('banner_img');?>);
-                    "
-                ></div>
-            </div>
-        </div>
+        <?php
+                endif;
+            endfor;
+        ?>
     </div>
+    <script type="text/javascript">
+        (function() {
+            'use strict'
+
+            class TichchurchBanner {
+                constructor (active=0, delay=3000, SOH=true) {
+                    this.elBanner = document.getElementById('mainBanner')
+                    this.slides = this.elBanner.querySelectorAll('.site-banner__item')
+                    this.activeSlide = active
+                    this.activeClass = 'is-active'
+                    this.countSlides = this.slides.length
+                    this.timer =  null
+                    this.delay = delay
+                    this.inited = false
+                    this.stopOnHover = SOH
+                }
+                changeSlide() {
+                    var scope = this
+                    this.slides.forEach(function(el,k){
+                        if (k === scope.activeSlide) {
+                            el.classList.add(scope.activeClass)
+                        } else {
+                            el.classList.remove(scope.activeClass)
+                        }
+                    })
+                    this.activeSlide++
+                    if (this.activeSlide > this.slides.length - 1)
+                        this.activeSlide = 0
+                }
+                soh() {
+                    if (this.stopOnHover) {
+                        var scope = this
+                        this.elBanner.addEventListener('mouseover', function(e){
+                            if (e.type === 'mouseover' && (e.target === scope.elBanner || scope.elBanner.contains(e.target))) {
+                                scope.stopSlide()
+                            }
+                        }, false)
+                        this.elBanner.addEventListener('mouseout', function(e){
+                            if (!scope.timer) {
+                                scope.startSlide()
+                            }
+                        }, false)
+                    }
+                }
+                startSlide() {
+                    if (!this.inited) {
+                        this.changeSlide()
+                        this.soh()
+                        this.inited = true
+                    }
+
+                    if (this.countSlides > 0) {
+                        var scope = this
+                        this.timer = setInterval(function(){
+                            scope.changeSlide()
+                        }, this.delay)
+                    }
+                }
+                stopSlide() {
+                    clearInterval(this.timer)
+                    this.timer = null
+                }
+            }
+
+            var banner = new TichchurchBanner(0, <?php echo get_theme_mod('banner_delay');?>, <?php echo get_theme_mod('banner_stop_on_hover');?>)
+            banner.startSlide()
+        })();
+    </script>
 </section>
 <?php endif; ?>
 

@@ -120,91 +120,135 @@ function tihchurch_customize_register( $wp_customize ) {
 	// ::UI & Colors
 
 	// Banner
-  $wp_customize->add_section( 'banner_section', array(
+  $wp_customize->add_panel( 'banner_section', array(
 		'title' => __('Настройки баннера', ''),
 		'description' => __( 'Задайте нужные параметры для отображения баннера на сайте', '' ),
     'priority' => null
-  ));
-	$wp_customize->add_setting( 'banner_height', array(
-		'default' => null
-  ));
+	));
+	$wp_customize->add_section( 'banner_settings', array(
+		'title' => __('Опции баннера', ''),
+		'panel' => 'banner_section',
+		'priority' => null
+	));
+	$wp_customize->add_setting( 'banner_height' );
   $wp_customize->add_control( 'banner_height', array(
 		'label' => __('Высота в px', ''),
-		'section' => 'banner_section',
+		'section' => 'banner_settings',
 		'priority' => null,
-		'type' => 'text'
+		'type' => 'number'
 	));
-	$wp_customize->add_setting( 'banner_mobile_height', array(
-		'default' => null
-  ));
+	$wp_customize->add_setting( 'banner_mobile_height' );
   $wp_customize->add_control( 'banner_mobile_height', array(
 		'label' => __('Высота для мобилы в px', ''),
-		'section' => 'banner_section',
+		'section' => 'banner_settings',
 		'priority' => null,
-		'type' => 'text'
+		'type' => 'number'
 	));
-	$wp_customize->add_setting( 'banner_img' );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'banner_img', array(
-		'label' => __( 'Изображение для слайда баннера' ),
-		'section' => 'banner_section',
-		'settings' => 'banner_img',
-		'mime_type' => 'image',
-		'button_labels' => array(
-			'select' => __( 'Выберите файл' ),
-			'change' => __( 'Выбрать файл' ),
-			'default' => __( 'По-умолчанию' ),
-			'remove' => __( 'Удалить' ),
-			'placeholder' => __( 'Файл не выбран' ),
-			'frame_title' => __( 'Выберите файл' ),
-			'frame_button' => __( 'Выбран файл' ),
-		)
-	)));
-  $wp_customize->add_setting( 'banner_title', array(
-		'default' => null
-  ));
-  $wp_customize->add_control( 'banner_title', array(
-		'label' => __('Заголовок', ''),
-		'section' => 'banner_section',
+	$wp_customize->add_setting( 'banner_slides_count', array(
+		'default' => 5,
+		'transport' => 'refresh'
+	));
+  $wp_customize->add_control( 'banner_slides_count', array(
+		'label' => __('Количество слайдов', ''),
+		'section' => 'banner_settings',
 		'priority' => null,
-		'type' => 'text'
+		'type' => 'number'
 	));
-	$wp_customize->add_setting( 'banner_title_eng', array(
-		'default' => null	
-  ));
-  $wp_customize->add_control( 'banner_title_eng', array(
-		'label' => __('Заголовок на Анлг.', ''),
-		'section' => 'banner_section',
+	$wp_customize->add_setting( 'banner_delay', array(
+		'default' => 6000
+	));
+  $wp_customize->add_control( 'banner_delay', array(
+		'label' => __('Длительность таймера в мс', ''),
+		'section' => 'banner_settings',
 		'priority' => null,
-		'type' => 'text'
+		'type' => 'number'
 	));
-	$wp_customize->add_setting( 'banner_desc', array(
-		'default' => null	
-  ));
-  $wp_customize->add_control( 'banner_desc', array(
-		'label' => __('Описание', ''),
-		'section' => 'banner_section',
-		'priority' => null,
-		'type' => 'textarea'
-	));
-	$wp_customize->add_setting( 'banner_desc_eng', array(
-		'default' => null	
-  ));
-  $wp_customize->add_control( 'banner_desc_eng', array(
-		'label' => __('Описание на Англ.', ''),
-		'section' => 'banner_section',
-		'priority' => null,
-		'type' => 'textarea'
-	));
-	$wp_customize->add_setting( 'banner_slide_tonning', array(
+	$wp_customize->add_setting( 'banner_stop_on_hover', array(
 		'default' => true
-  ));
-	$wp_customize->add_control( 'banner_slide_tonning', array(
-		'label' => __( 'Тонировка на слайде' ),
-		'description' => esc_html__( 'Делает читабельным белый текст на светлом фоне' ),
-		'section'  => 'banner_section',
+	));
+	$wp_customize->add_control( 'banner_stop_on_hover', array(
+		'label' => __( 'Останавливайт слайдинг при наведении на баннер' ),
+		'section'  => 'banner_settings',
 		'priority' => null,
 		'type'=> 'checkbox'
 	));
+
+	$countSlides = get_theme_mod('banner_slides_count');
+	for ($i=0; $i < $countSlides; $i++) {
+		$wp_customize->add_section( 'banner_section_'.$i, array(
+			'title' => __('Настройки '.($i + 1).' слайда', ''),
+			'panel' => 'banner_section',
+			'priority' => null
+		));
+		$wp_customize->add_setting( 'banner_img'.$i );
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'banner_img'.$i, array(
+			'label' => __( 'Изображение для слайда баннера' ),
+			'section' => 'banner_section_'.$i,
+			'settings' => 'banner_img'.$i,
+			'mime_type' => 'image',
+			'button_labels' => array(
+				'select' => __( 'Выберите файл' ),
+				'change' => __( 'Выбрать файл' ),
+				'default' => __( 'По-умолчанию' ),
+				'remove' => __( 'Удалить' ),
+				'placeholder' => __( 'Файл не выбран' ),
+				'frame_title' => __( 'Выберите файл' ),
+				'frame_button' => __( 'Выбран файл' ),
+			)
+		)));
+		$wp_customize->add_setting( 'banner_mobile_img'.$i );
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'banner_mobile_img'.$i, array(
+			'label' => __( 'Изображение для слайда мобильного баннера' ),
+			'section' => 'banner_section_'.$i,
+			'settings' => 'banner_mobile_img'.$i,
+			'mime_type' => 'image',
+			'button_labels' => array(
+				'select' => __( 'Выберите файл' ),
+				'change' => __( 'Выбрать файл' ),
+				'default' => __( 'По-умолчанию' ),
+				'remove' => __( 'Удалить' ),
+				'placeholder' => __( 'Файл не выбран' ),
+				'frame_title' => __( 'Выберите файл' ),
+				'frame_button' => __( 'Выбран файл' ),
+			)
+		)));
+		$wp_customize->add_setting( 'banner_title'.$i );
+		$wp_customize->add_control( 'banner_title'.$i, array(
+			'label' => __('Заголовок', ''),
+			'section' => 'banner_section_'.$i,
+			'priority' => null,
+			'type' => 'text'
+		));
+		$wp_customize->add_setting( 'banner_title_eng'.$i );
+		$wp_customize->add_control( 'banner_title_eng'.$i, array(
+			'label' => __('Заголовок на Анлг.', ''),
+			'section' => 'banner_section_'.$i,
+			'priority' => null,
+			'type' => 'text'
+		));
+		$wp_customize->add_setting( 'banner_desc'.$i );
+		$wp_customize->add_control( 'banner_desc'.$i, array(
+			'label' => __('Описание', ''),
+			'section' => 'banner_section_'.$i,
+			'priority' => null,
+			'type' => 'textarea'
+		));
+		$wp_customize->add_setting( 'banner_desc_eng'.$i );
+		$wp_customize->add_control( 'banner_desc_eng'.$i, array(
+			'label' => __('Описание на Англ.', ''),
+			'section' => 'banner_section_'.$i,
+			'priority' => null,
+			'type' => 'textarea'
+		));
+		$wp_customize->add_setting( 'banner_slide_tonning'.$i );
+		$wp_customize->add_control( 'banner_slide_tonning'.$i, array(
+			'label' => __( 'Тонировка на слайде' ),
+			'description' => esc_html__( 'Делает читабельным белый текст на светлом фоне' ),
+			'section'  => 'banner_section_'.$i,
+			'priority' => null,
+			'type'=> 'checkbox'
+		));
+	}
 	// ::Banner
 }
 
