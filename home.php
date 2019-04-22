@@ -12,7 +12,7 @@
     <div class="site-banner__wrapper">
         <?php
             for ($i=0; $i<$slidesCount; $i++):
-                if (get_theme_mod('banner_img'.$i)):
+                if (get_theme_mod('banner_img_'.$i)):
         ?>
                 <div class="site-banner__item">
                     <div class="container">
@@ -33,8 +33,8 @@
                     </div>
                     <div class="site-banner__item-bg<?php if (get_theme_mod('banner_slide_tonning_'.$i)) echo ' with-tint';?>">
                         <style>
-                            .site-banner__item-bg-image__<?php echo $i;?> { background-image: url(<?php echo get_theme_mod('banner_img'.$i);?>); }
-                            @media (max-width: 767px) { .site-banner__item-bg-image__<?php echo $i;?> { background-image: url(<?php echo get_theme_mod('banner_mobile_img'.$i);?>); } }
+                            .site-banner__item-bg-image__<?php echo $i;?> { background-image: url(<?php echo get_theme_mod('banner_img_'.$i);?>); }
+                            @media (max-width: 767px) { .site-banner__item-bg-image__<?php echo $i;?> { background-image: url(<?php echo get_theme_mod('banner_mobile_img_'.$i);?>); } }
                         </style>
                         <div class="site-banner__item-bg-image site-banner__item-bg-image__<?php echo $i;?>"></div>
                     </div>
