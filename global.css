@@ -500,6 +500,11 @@ a.site-title {
 .site-social li:last-child {
   margin-right: 0;
 }
+.site-social .site-social__icon {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
 
 /* Helpers */
 .space-hor {

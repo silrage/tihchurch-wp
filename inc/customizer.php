@@ -117,6 +117,13 @@ function tihchurch_customize_register( $wp_customize ) {
 		'priority' => null,
 		'type' => 'color'
 	));
+	$wp_customize->add_setting( 'ui_social_insta' );
+	$wp_customize->add_control( 'ui_social_insta', array(
+		'label' => __('Ссылка в Instagram', ''),
+		'section' => 'ui_section',
+		'priority' => null,
+		'type' => 'text'
+	));
 	// ::UI & Colors
 
 	// Banner
