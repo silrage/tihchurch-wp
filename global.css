@@ -232,6 +232,7 @@ a.site-title {
 .site-tabs__wrapper::-webkit-scrollbar {
   display: none;
 }
+.site-tabs__wrapper > li,
 .site-tabs__item {
   box-sizing: content-box;
   flex-direction: row;
@@ -248,22 +249,27 @@ a.site-title {
   padding-top: 19px;
   text-align: center;
 }
+.site-tabs__wrapper > li > a,
+.site-tabs__item > a {
+  position: relative;
+  z-index: 22;
+}
+.site-tabs__wrapper > li > ul,
 .site-tabs__item > ul {
-  opacity: 0;
-  position: absolute;
-  top: 100%;
-  margin-left: -10px;
-  padding: 10px;
-  pointer-events: none;
-  -webkit-transition: opacity .5s ease .2s;
-  transition: opacity .5s ease .2s;
+  display: none; /* Выводится через JS, путем клонирования */
 }
-.site-tabs__item:hover > ul {
-  pointer-events: auto;
-  opacity: 1;
-}
+.site-tabs__wrapper > li:first-child,
 .site-tabs__item:first-child {
   margin-left: 0;
+}
+.site-tabs__wrapper > li.shown:after,
+.site-tabs__item.shown:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 .site-tabs__wrapper:after {
   content: "";
@@ -274,6 +280,22 @@ a.site-title {
   position: relative;
   width: 10px;
   height: 1px;
+}
+#siteMenuView {
+  position: absolute;
+  max-height: 0px;
+  overflow: hidden;
+  width: 100%;
+}
+header .site-menu__childs {
+  position: absolute;
+  margin-left: -20px;
+}
+header .site-menu__childs-link {
+  display: block;
+  line-height: 55px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .site-lang {

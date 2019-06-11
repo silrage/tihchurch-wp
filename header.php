@@ -51,7 +51,7 @@
                     <div class="site-desc">
                         <p><?php the_field('description', $other_page); ?></p>
                     </div>
-                    <div class="site-primary-menu">
+                    <div id="siteMenu" class="site-primary-menu">
                         <div class="site-tabs">
                             <?php html5blank_nav(); ?>
                         </div>
@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+            <div id="siteMenuView"></div>
 
         </header>
         <!-- /header -->
