@@ -117,14 +117,64 @@ function tihchurch_customize_register( $wp_customize ) {
 		'priority' => null,
 		'type' => 'color'
 	));
-	$wp_customize->add_setting( 'ui_social_insta' );
-	$wp_customize->add_control( 'ui_social_insta', array(
-		'label' => __('Ссылка в Instagram', ''),
-		'section' => 'ui_section',
+	// ::UI & Colors
+
+	// Social
+	$wp_customize->add_section( 'social_settings', array(
+		'title' => __('Настройки соц. сетей', ''),
+		'description' => __( 'Параметры ссылок в соц. сети. Указывайте полную ссылку с протоколом (https://social.com/mylink)', '' ),
+		'priority' => null
+	));
+	$wp_customize->add_setting( 'social_vk' );
+	$wp_customize->add_control( 'social_vk', array(
+		'label' => __('Ссылка во ВКонтакте', ''),
+		'section' => 'social_settings',
 		'priority' => null,
 		'type' => 'text'
 	));
-	// ::UI & Colors
+	$wp_customize->add_setting( 'social_insta' );
+	$wp_customize->add_control( 'social_insta', array(
+		'label' => __('Ссылка в Instagram', ''),
+		'section' => 'social_settings',
+		'priority' => null,
+		'type' => 'text'
+	));
+	$wp_customize->add_setting( 'social_you' );
+	$wp_customize->add_control( 'social_you', array(
+		'label' => __('Ссылка в Youtube', ''),
+		'section' => 'social_settings',
+		'priority' => null,
+		'type' => 'text'
+	));
+	$wp_customize->add_setting( 'social_rutube' );
+	$wp_customize->add_control( 'social_rutube', array(
+		'label' => __('Ссылка в RuTube', ''),
+		'section' => 'social_settings',
+		'priority' => null,
+		'type' => 'text'
+	));
+	$wp_customize->add_setting( 'social_fb' );
+	$wp_customize->add_control( 'social_fb', array(
+		'label' => __('Ссылка в Facebook', ''),
+		'section' => 'social_settings',
+		'priority' => null,
+		'type' => 'text'
+	));
+	$wp_customize->add_setting( 'social_ok' );
+	$wp_customize->add_control( 'social_ok', array(
+		'label' => __('Ссылка в Одноклассники', ''),
+		'section' => 'social_settings',
+		'priority' => null,
+		'type' => 'text'
+	));
+	$wp_customize->add_setting( 'social_tw' );
+	$wp_customize->add_control( 'social_tw', array(
+		'label' => __('Ссылка в Twitter', ''),
+		'section' => 'social_settings',
+		'priority' => null,
+		'type' => 'text'
+	));
+	// ::Social
 
 	// Banner
   $wp_customize->add_panel( 'banner_section', array(

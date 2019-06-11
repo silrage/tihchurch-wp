@@ -500,7 +500,11 @@ a.site-title {
 .site-social li:last-child {
   margin-right: 0;
 }
+.site-social a {
+  display: block;
+}
 .site-social .site-social__icon {
+  display: block;
   fill: #fff;
   width: 20px;
   height: 20px;
