@@ -287,6 +287,59 @@ a.site-title {
   overflow: hidden;
   width: 100%;
 }
+#burgerMenu {
+  display: none;
+  margin-top: -23px;
+  margin-left: -5px;
+}
+@media (max-width: 767px) {
+  #burgerMenu {
+    display: block;
+  }
+  #siteMenu {
+    display: none;
+  }
+  header {
+    padding-bottom: 20px;
+  }
+}
+.burger-icon {
+  position: absolute;
+  height: 46px;
+  width: 46px;
+}
+.burger-container {
+  position: absolute;
+  height: 28px;
+  width: 36px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.burger-bun-top,
+.burger-bun-bot,
+.burger-filling {
+  position: absolute;
+  display: block;
+  height: 4px;
+  width: 36px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #000;
+}
+.burger-bun-top {
+  top: 0;
+  transform-origin: 34px 2px;
+}
+.burger-bun-bot {
+  bottom: 0;
+  transform-origin: 34px 2px;
+}
+.burger-filling {
+  top: 12px;
+}
 header .site-menu__childs {
   position: absolute;
   margin-left: -20px;

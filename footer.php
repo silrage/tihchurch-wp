@@ -132,90 +132,98 @@
 
 <!-- other -->
 <script>
-  window.isTouchDevice="undefined"!=typeof window&&"ontouchstart"in window;
-  /**
-   * Скрипт для основного меню
-   */
-  var menu = document.getElementById('siteMenu'),
-      menuView = document.getElementById('siteMenuView');
-  if (menu && menuView && !window.isTouchDevice) {
-    var links = menu.querySelectorAll('.site-tabs__wrapper > .menu-item > a');
-    void [].forEach.call(links, function(link, key) {
-      var parent = link.parentElement,
-          childs = parent.querySelector('.sub-menu');
-      if (childs) {
-        link.addEventListener('mousemove', function(e){menuLinkShow(parent,childs)}, { passive: true })
-      }
-    });
-    function menuLinkShow (parentLink,childs) {
-      if (parentLink.className.indexOf('shown') > 0)
-        return false;
-      parentLink.classList.add('shown');
-      menuView.innerHTML=null;
-      // Конвертируем дочерние ссылки, с целью сбора обновленных извне DOM-элементов
-      var childsEl = document.createElement('DIV');
-        childsEl.className='site-menu__childs';
-      void [].forEach.call(childs.children, function(ch, key){
-        var chLink=document.createElement('A'),
-            link=ch.querySelector('a');
-        chLink.className='site-menu__childs-link';
-        chLink.href=link.href;
-        chLink.innerHTML=link.innerHTML;
-        childsEl.appendChild(chLink);
+  (function () {
+    window.isTouchDevice="undefined"!=typeof window&&"ontouchstart"in window;
+    /**
+     * Скрипт для основного меню
+     */
+    var menu = document.getElementById('siteMenu'),
+        menuView = document.getElementById('siteMenuView');
+    if (!menu || !menuView)
+      return;
+    if (window.innerWidth >= 768) {
+      var links = menu.querySelectorAll('.site-tabs__wrapper > .menu-item > a');
+      void [].forEach.call(links, function(link, key) {
+        var parent = link.parentElement,
+            childs = parent.querySelector('.sub-menu');
+        if (childs) {
+          link.addEventListener('mousemove', function(e){menuLinkShow(parent,childs)}, { passive: true })
+        }
       });
-      childsEl.style.left=parentLink.getBoundingClientRect().left+'px';
-      menuView.appendChild(childsEl);
-      mc({
-        duration: 777,
-        timing: easeInOut(3),
-        draw: function(progress){
-          menuView.style.minHeight = parseInt(0 + (childsEl.clientHeight - 0) * progress) + 'px'
-        },
-        onLeave: function(){}
-      })
-      function closeListener (e) {
-        if (e.target !== parentLink && e.target !== childsEl && !parentLink.contains(e.target) && !childsEl.contains(e.target)) {
-          menuView.style.minHeight=null;
-          menuView.innerHTML=null;
-          parentLink.classList.remove('shown');
-          window.removeEventListener('mouseover', closeListener);
+      function menuLinkShow (parentLink,childs) {
+        if (parentLink.className.indexOf('shown') > 0)
+          return false;
+        parentLink.classList.add('shown');
+        menuView.innerHTML=null;
+        // Конвертируем дочерние ссылки, с целью сбора обновленных извне DOM-элементов
+        var childsEl = document.createElement('DIV');
+          childsEl.className='site-menu__childs';
+        void [].forEach.call(childs.children, function(ch, key){
+          var chLink=document.createElement('A'),
+              link=ch.querySelector('a');
+          chLink.className='site-menu__childs-link';
+          chLink.href=link.href;
+          chLink.innerHTML=link.innerHTML;
+          childsEl.appendChild(chLink);
+        });
+        childsEl.style.left=parentLink.getBoundingClientRect().left+'px';
+        menuView.appendChild(childsEl);
+        mc({
+          duration: 777,
+          timing: easeInOut(3),
+          draw: function(progress){
+            menuView.style.minHeight = parseInt(0 + (childsEl.clientHeight - 0) * progress) + 'px'
+          },
+          onLeave: function(){}
+        })
+        function closeListener (e) {
+          if (e.target !== parentLink && e.target !== childsEl && !parentLink.contains(e.target) && !childsEl.contains(e.target)) {
+            menuView.style.minHeight=null;
+            menuView.innerHTML=null;
+            parentLink.classList.remove('shown');
+            window.removeEventListener('mouseover', closeListener);
+          }
         }
+        window.addEventListener('mouseover', closeListener, { passive: true });
       }
-      window.addEventListener('mouseover', closeListener, { passive: true });
+    } else {
+      // Активируем копию меню, клик по бургеру
+      var burger = document.getElementById('burgerMenu'),
+          menuView = document.getElementById('siteMenuView');
     }
-  }
 
-  /* Покадровая анимация для метода mc */
-  var easeIn = function(power) { return function(t) { return Math.pow(t, power) }}
-  var easeOut = function(power) { return function(t) { return 1 - Math.abs(Math.pow(t - 1, power)) }}
-  var easeInOut = function(power) { return function(t) { return t < 0.5 ? easeIn(power)(t * 2) / 2 : easeOut(power)(t * 2 - 1) / 2 + 0.5 }}
-  function mc(opt) {
-    var requestId,
-        fps = 60,
-        fpsInterval = 1000 / fps,
-        lastDrawTime = performance.now(),
-        startTime,
-        animate = function (timestamp) {
-      requestId = window.requestAnimationFrame(animate)
-      var timeElapsed = timestamp - lastDrawTime
-      if (timeElapsed > fpsInterval) {
-        lastDrawTime = timestamp - (timeElapsed % fpsInterval)
-        startTime = startTime || timestamp
-        var timeElapsedSinceStart = timestamp - startTime
-        var progress = timeElapsedSinceStart / opt.duration
-        var safeProgress = Math.min(progress.toFixed(2), 1)
-        if (safeProgress === 1) {
-          opt.draw(opt.timing(1))
-          window.cancelAnimationFrame(requestId)
-          requestId = null
-          opt.onLeave()
-        } else {
-          opt.draw(opt.timing(safeProgress))
+    /* Покадровая анимация для метода mc */
+    var easeIn = function(power) { return function(t) { return Math.pow(t, power) }}
+    var easeOut = function(power) { return function(t) { return 1 - Math.abs(Math.pow(t - 1, power)) }}
+    var easeInOut = function(power) { return function(t) { return t < 0.5 ? easeIn(power)(t * 2) / 2 : easeOut(power)(t * 2 - 1) / 2 + 0.5 }}
+    function mc(opt) {
+      var requestId,
+          fps = 60,
+          fpsInterval = 1000 / fps,
+          lastDrawTime = performance.now(),
+          startTime,
+          animate = function (timestamp) {
+        requestId = window.requestAnimationFrame(animate)
+        var timeElapsed = timestamp - lastDrawTime
+        if (timeElapsed > fpsInterval) {
+          lastDrawTime = timestamp - (timeElapsed % fpsInterval)
+          startTime = startTime || timestamp
+          var timeElapsedSinceStart = timestamp - startTime
+          var progress = timeElapsedSinceStart / opt.duration
+          var safeProgress = Math.min(progress.toFixed(2), 1)
+          if (safeProgress === 1) {
+            opt.draw(opt.timing(1))
+            window.cancelAnimationFrame(requestId)
+            requestId = null
+            opt.onLeave()
+          } else {
+            opt.draw(opt.timing(safeProgress))
+          }
         }
       }
+      animate();
     }
-    animate();
-  }
+  })();
 
   var tmshift=0; // Временной сдвиг от текущей даты. К этой переменной будем добавлять 24, чтобы переходить на икону следующего дня.
   function bodyOnload()
