@@ -22,6 +22,7 @@ function tihchurch_custom_css () {
 			background: <?php echo esc_html(get_theme_mod('ui_bg_overlay'));?>;
 			color: <?php echo esc_html(get_theme_mod('ui_color_content'));?>;
 		}
+		.burger-menu__childs { background: <?php echo esc_html(get_theme_mod('ui_bg_header') ? get_theme_mod('ui_bg_header') : '#fff');?>; }
 		header, .site-tabs__item > ul { background: <?php echo esc_html(get_theme_mod('ui_bg_header') ? get_theme_mod('ui_bg_header') : '#fff');?>; }
 		header .site-menu__childs-link {
 			background: <?php echo esc_html(get_theme_mod('ui_bg_header') ? get_theme_mod('ui_bg_header') : '#fff');?>;

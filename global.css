@@ -289,18 +289,31 @@ a.site-title {
 }
 #burgerMenu {
   display: none;
+  cursor: pointer;
   margin-top: -23px;
   margin-left: -5px;
 }
 @media (max-width: 767px) {
+  header {
+    padding-bottom: 20px;
+    position: initial;
+  }
   #burgerMenu {
     display: block;
   }
   #siteMenu {
     display: none;
   }
-  header {
-    padding-bottom: 20px;
+  #siteMenuView {
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    max-height: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    left: -100%;
+    z-index: 100;
   }
 }
 .burger-icon {
@@ -339,6 +352,33 @@ a.site-title {
 }
 .burger-filling {
   top: 12px;
+}
+.burger-menu__childs {
+  overflow: hidden;
+  overflow-y: auto;
+  width: 300px;
+  height: 100%;
+  position: relative;
+  z-index: 102;
+}
+.burger-menu__link > a {
+  display: block;
+  padding: 20px;
+}
+.burger-menu__sub-links {
+  padding-left: 20px;
+}
+.burger-menu__overlay {
+  background: rgba(0,0,0,.8);
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 101;
 }
 header .site-menu__childs {
   position: absolute;
