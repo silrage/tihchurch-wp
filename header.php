@@ -31,7 +31,14 @@
         <!-- header -->
         <header class="header clear">
             <div class="container">
-                <div class="wrap space-top space-md-top2">
+                <div class="wrap space-top space-td-top2">
+                    <a id="burgerMenu" class="burger-icon">
+                        <div class="burger-container">
+                            <span class="burger-bun-top"></span>
+                            <span class="burger-filling"></span>
+                            <span class="burger-bun-bot"></span>
+                        </div>
+                    </a>
                     <a
                         href="/"
                         class="site-title"
@@ -51,7 +58,7 @@
                     <div class="site-desc">
                         <p><?php the_field('description', $other_page); ?></p>
                     </div>
-                    <div class="site-primary-menu">
+                    <div id="siteMenu" class="site-primary-menu">
                         <div class="site-tabs">
                             <?php html5blank_nav(); ?>
                         </div>
@@ -68,6 +75,7 @@
                     </div>
                 </div>
             </div>
+            <div id="siteMenuView"></div>
 
         </header>
         <!-- /header -->
