@@ -169,13 +169,13 @@
                 <div class="news-container__content row">
                     <?php
                     global $query_string;
-                    query_posts($query_string . '&cat=1&order=ASC&posts_per_page=20');
+                    query_posts($query_string . '&cat=1&order=DESC&posts_per_page=20');
                     if (have_posts()) {
                         while (have_posts()) {
                             the_post(); ?>
 
                             <div class="news-container__one-post col-6 col-md-3">
-                                <?php if (get_field('img1')): ?>
+                                <?php if (get_field('img1')) { ?>
                                     <?php $hasMoreImages = get_field('img2') && get_field('img3'); ?>
                                     <div class="news-container__img-wrapper<?= ($hasMoreImages) ? ' has-more-images' : null; ?>">
                                         <div class="news-container__first-image">
@@ -192,7 +192,13 @@
                                         }
                                         ?>
                                     </div>
-                                <?php endif; ?>
+                                <?php } else if (has_post_thumbnail()) { ?>
+                                    <div class="news-container__img-wrapper">
+                                        <div class="news-container__first-image">
+                                            <?php the_post_thumbnail(); ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                                 <div class="news-container__text">
                                     <div class="news-container__date-wrapper">
                                         <span class="news-container__date"><?php echo get_the_date(); ?></span>
